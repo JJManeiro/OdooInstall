@@ -1,0 +1,23 @@
+services:
+    web:
+      image: odoo:16.0
+      depends_on:
+        - db
+      ports:
+        - "8069:8069"
+      environment:
+        - HOST=db
+        - USER=juan
+        - PASSWORD=castelao
+      container_name: damodoo  
+    db:
+        image: postgres:15
+        ports:
+               #contenedor de odoo:ordenador
+            #- "6666:5432"
+            - "5432:5432"
+        environment:
+            POSTGRES_PASSWORD: castelao
+            POSTGRES_USER: juan
+            POSTGRES_DB: postgres
+        container_name: damsql
